@@ -2,6 +2,7 @@
 ## Argo Configs
 configs:
   cm:
+    url: https://argocd.qraft.ai
     dex.config: |
       connectors:
         - type: oidc
@@ -11,4 +12,5 @@ configs:
             Issuer: https://auth.qraft.ai/realms/qraft
             clientID: argocd-test-yujin
             clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
+            redirectURI: https://argocd.qraft.ai/api/dex/callback
             requestedScopes: ["openid", "profile", "email", "groups"]
