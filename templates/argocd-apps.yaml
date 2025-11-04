@@ -31,7 +31,7 @@ spec:
   source:
     repoURL: https://github.com/argoproj/argo-helm.git
     path: charts/argo-cd
-    targetRevision: 9.0.6
+    targetRevision: main
     helm:
       valueFiles:
         - values.yaml  # 공식 Helm chart 기본 값
