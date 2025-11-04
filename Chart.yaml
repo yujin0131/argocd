@@ -9,4 +9,4 @@ home: https://argo-cd.readthedocs.io/
 
 sources:
   - https://github.com/argoproj/argo-cd
-  - https://git.qraftec.com:ml-platform/argocd
+  - https://github.com/yujin0131/argocd

@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://git.qraftec.com:ml-platform/argocd.git
-    targetRevision: HEAD
+    repoURL: https://github.com/yujin0131/argocd.git
+    targetRevision: feature/test-argo
     path: .
   destination:
     server: https://kubernetes.default.svc
