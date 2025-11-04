@@ -1,5 +1,6 @@
 {{- range .Values.projects }}
   {{- range .namespaces }}
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -7,6 +8,5 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
     argocd.argoproj.io/managed-by: argocd
----
   {{- end }}
 {{- end }}
