@@ -1,0 +1,12 @@
+apiVersion: v2
+name: argocd
+description: ArgoCD App of Apps chart for managing ArgoCD
+type: application
+version: 0.1.0
+appVersion: "3.1.9"
+
+home: https://argo-cd.readthedocs.io/
+
+sources:
+  - https://github.com/argoproj/argo-cd
+  - https://git.qraftec.com:ml-platform/argocd

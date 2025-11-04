@@ -1,0 +1,4 @@
+repositories:
+  - name: infra
+    namespace: infra
+    url: https://git.qraftec.com/infra/infra-argocd-gitops.git

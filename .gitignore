@@ -1,0 +1,29 @@
+# ArgoCD 프로젝트 .gitignore
+
+# 민감한 정보가 포함된 values 파일
+values/**/secrets.yaml
+values/**/*-secrets.yaml
+values/**/credentials.yaml
+
+# 로컬 설정 파일
+*.local.yaml
+*.local.yml
+
+# 임시 파일
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDE 설정
+.idea/
+.vscode/
+*.code-workspace
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# Helm 차트 패키지
+*.tgz
+charts/*.tgz

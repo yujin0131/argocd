@@ -1,0 +1,54 @@
+--- 원본
+p, role:manager, applications, get, */*, allow
+p, role:manager, repositories, get, *, allow
+
+p, role:engineer, applications, *, */*, allow
+p, role:engineer, repositories, *, *, allow
+
+p, role:operator, applications, *, */*, allow
+p, role:operator, clusters, *, *, allow
+p, role:operator, certificates, *, *, allow
+p, role:operator, repositories, *, *, allow
+p, role:operator, projects, *, *, allow
+p, role:operator, accounts, *, *, allow
+p, role:operator, gpgkeys, *, *, allow
+
+g, ML-Ops, role:admin
+g, hyeok.choi@qraftec.com, role:admin
+
+--- 대충 이런 식으로 ...
+
+p, role:infra-admin, applications, *, *, allow
+p, role:infra-admin, clusters, *, infra, allow
+p, role:infra-admin, certificates, *, *, allow
+p, role:infra-admin, repositories, *, infra, allow
+p, role:infra-admin, projects, *, infra, allow
+p, role:infra-admin, accounts, *, *, allow
+p, role:infra-admin, gpgkeys, *, infra, allow
+g, yujin.lee@qraftec.com, role:infra-admin
+
+p, role:infra-developer, applications, get, *, allow
+p, role:infra-developer, applications, list, *, allow
+p, role:infra-developer, clusters, get, infra, allow
+p, role:infra-developer, clusters, list, infra, allow
+p, role:infra-developer, certificates, get, *, allow
+p, role:infra-developer, certificates, list, *, allow
+p, role:infra-developer, repositories, get, infra, allow
+p, role:infra-developer, repositories, list, infra, allow
+p, role:infra-developer, projects, get, infra, allow
+p, role:infra-developer, projects, list, infra, allow
+p, role:infra-developer, accounts, get, *, allow
+p, role:infra-developer, accounts, list, *, allow
+p, role:infra-developer, gpgkeys, get, *, allow
+p, role:infra-developer, gpgkeys, list, *, allow
+
+p, role:disclosure-admin, applications, *, disclosure/*, allow
+p, role:disclosure-admin, repositories, *, disclosure, allow
+p, role:disclosure-admin, projects, *, disclosure, allow
+g, hyeok.choi@qraftec.com, role:disclosure-admin
+
+p, role:disclosure-developer, applications, get, disclosure/*, allow
+p, role:disclosure-developer, applications, list, disclosure/*, allow
+p, role:disclosure-developer, applications, sync, disclosure/*, allow
+p, role:disclosure-developer, repositories, get, disclosure, allow
+p, role:disclosure-developer, repositories, list, disclosure, allow
