@@ -16,10 +16,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-  # syncPolicy:
-  #   automated:
-  #     prune: true
-  #     selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -38,13 +38,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-  ignoreDifferences:
-    - kind: ConfigMap
-      name: argocd-rbac-cm
-      namespace: argocd
-      jsonPointers:
-        - /data
-  # syncPolicy:
-  #   automated:
-  #     prune: true
-  #     selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
