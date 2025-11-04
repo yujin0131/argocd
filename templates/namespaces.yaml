@@ -1,8 +1,12 @@
+{{- range .Values.projects }}
+  {{- range .namespaces }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: infra
+  name: {{ . }}
   labels:
-    app.kubernetes.io/name: infra
     app.kubernetes.io/managed-by: Helm
     argocd.argoproj.io/managed-by: argocd
+---
+  {{- end }}
+{{- end }}

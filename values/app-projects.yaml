@@ -1,0 +1,10 @@
+projects:
+  - name: project-test
+    description: "test"
+    namespaces:
+      - test
+  - name: ml-platform
+    description: "infra ml-platform"
+    namespaces:
+      - infra
+      - ml-platform
