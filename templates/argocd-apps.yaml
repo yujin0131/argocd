@@ -38,6 +38,12 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+  ignoreDifferences:
+    - kind: ConfigMap
+      name: argocd-rbac-cm
+      namespace: argocd
+      jsonPointers:
+        - /data
   # syncPolicy:
   #   automated:
   #     prune: true
