@@ -1,3 +1,28 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    argocd.argoproj.io/managed-by: argocd
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    argocd.argoproj.io/managed-by: argocd
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ml-platform
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    argocd.argoproj.io/managed-by: argocd
+
 {{- range .Values.projects }}
   {{- range .namespaces }}
 ---
