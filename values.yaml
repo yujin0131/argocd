@@ -217,6 +217,17 @@ configs:
     #         clientSecret: $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
     #         orgs:
     #         - name: your-github-org
+    dex.config: |
+      connectors:
+        - type: oidc
+          id: keycloak
+          name: Keycloak
+          config:
+            Issuer: https://auth.qraft.ai/realms/qraft
+            clientID: argocd-test-yujin
+            clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
+            requestedScopes: ["openid", "profile", "email", "groups"]
+
 
     # OIDC configuration as an alternative to dex (optional).
     # oidc.config: |

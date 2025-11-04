@@ -6,6 +6,7 @@ p, role:infra-admin, projects, *, infra, allow
 p, role:infra-admin, accounts, *, *, allow
 p, role:infra-admin, gpgkeys, *, infra, allow
 g, yujin.lee@qraftec.com, role:infra-admin
+g, group:ML-Ops, role:infra-admin
 
 p, role:infra-developer, applications, get, *, allow
 p, role:infra-developer, applications, list, *, allow
