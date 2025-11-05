@@ -17,4 +17,4 @@ metadata:
 data:
   url: {{ .Values.configs.cm.url }}
   dex.config: |
-{{ .Values.configs.cm.dex.config }}
+{{ index .Values.configs.cm "dex.config" }}
