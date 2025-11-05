@@ -34,8 +34,21 @@ spec:
     chart: argo-cd
     targetRevision: 9.0.6
     helm:
-      valueFiles:
-        - values.yaml  # 공식 Helm chart 기본 값
+      values: |
+        configs:
+          cm:
+            url: http://localhost:8080
+            dex.config: |
+              connectors:
+                - type: oidc
+                  id: keycloak
+                  name: Keycloak
+                  config:
+                    Issuer: https://auth.qraft.ai/realms/qraft
+                    clientID: argocd-test-yujin
+                    clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
+                    redirectURI: https://argocd.qraft.ai/api/dex/callback
+                    requestedScopes: ["openid", "profile", "email", "groups"]
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
