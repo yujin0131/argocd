@@ -11,6 +11,7 @@ spec:
     path: .
     helm:
       valueFiles:
+        - values.yaml
         - values/app-projects.yaml
         - values/repository.yaml
   destination:
@@ -29,13 +30,12 @@ metadata:
 spec:
   project: ml-platform
   source:
-    repoURL: https://github.com/argoproj/argo-helm.git
-    path: charts/argo-cd
-    targetRevision: main
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 9.0.6
     helm:
       valueFiles:
         - values.yaml  # 공식 Helm chart 기본 값
-        - ../values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
