@@ -1,16 +1,22 @@
-# https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
-## Argo Configs
-configs:
-  cm:
-    url: http://localhost:8080
-    dex.config: |
-      connectors:
-        - type: oidc
-          id: keycloak
-          name: Keycloak
-          config:
-            Issuer: https://auth.qraft.ai/realms/qraft
-            clientID: argocd-test-yujin
-            clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
-            redirectURI: http://localhost:8080/api/dex/callback
-            requestedScopes: ["openid", "profile", "email", "groups"]
+# ArgoCD Helm Chart Configuration
+# This section is used by the "argo" Application to manage ArgoCD itself
+argocd:
+  helmChartVersion: "9.0.6"  # ArgoCD Helm chart version
+  releaseName: "argocd"  # Helm release name (기존 Helm 설치와 동일하게 설정하면 adopt됨)
+  values:
+    # https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
+    ## Argo Configs
+    configs:
+      cm:
+        url: http://localhost:8080
+        dex.config: |
+          connectors:
+            - type: oidc
+              id: keycloak
+              name: Keycloak
+              config:
+                Issuer: https://auth.qraft.ai/realms/qraft
+                clientID: argocd-test-yujin
+                clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
+                redirectURI: http://localhost:8080/api/dex/callback
+                requestedScopes: ["openid", "profile", "email", "groups"]
