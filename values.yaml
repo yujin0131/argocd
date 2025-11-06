@@ -1,30 +1,24 @@
-# ArgoCD Helm Chart Configuration
-# This section is used by the "argo" Application to manage ArgoCD itself
-argocd:
-  helmChartVersion: "9.0.6"  # ArgoCD Helm chart version
-  releaseName: "argocd"  # Helm release name (기존 Helm 설치와 동일하게 설정하면 adopt됨)
-  values:
-    # https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
-    ## Argo Configs
-    configs:
-      cm:
-        url: http://localhost:8080
-        dex.config: |
-          connectors:
-            - type: oidc
-              id: keycloak
-              name: Keycloak
-              config:
-                Issuer: https://auth.qraft.ai/realms/qraft
-                clientID: argocd-test-yujin
-                clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
-                redirectURI: http://localhost:8080/api/dex/callback
-                requestedScopes: ["openid", "profile", "email", "groups"]
-    # Redis secret init job이 pending 상태로 걸리는 문제 방지
-    # 이슈: https://github.com/argoproj/argo-cd/issues/22167
-    # ArgoCD 2.14.x에서 App of Apps 패턴으로 자신을 관리할 때 redis-secret-init Job이
-    # 반복 실행되는 버그로 인해 sync가 완료되지 않는 문제 발생
-    # 해결: secretInitContainer를 비활성화 (Redis secret이 이미 존재하거나 인증 불필요한 경우 안전)
-    redis:
-      secretInitContainer:
-        enabled: false
+server:
+  service:
+    type: ClusterIP
+
+configs:
+  params:
+    server.insecure: "true"
+  cm:
+    url: http://localhost:8080
+    dex.config: |
+      connectors:
+        - type: oidc
+          id: keycloak
+          name: Keycloak
+          config:
+            Issuer: https://auth.qraft.ai/realms/qraft
+            clientID: argocd-test-yujin
+            clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
+            redirectURI: http://localhost:8080/api/dex/callback
+            requestedScopes: ["openid", "profile", "email", "groups"]
+
+redis:
+  secretInitContainer:
+    enabled: false

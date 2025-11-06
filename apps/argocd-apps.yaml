@@ -7,6 +7,11 @@ metadata:
 spec:
   project: ml-platform
   sources:
+    # Values files from Git repository
+    - repoURL: https://github.com/yujin0131/argocd.git
+      targetRevision: feature/test-argo
+      ref: values
+
     # Base: official Helm chart
     - repoURL: https://argoproj.github.io/argo-helm
       chart: argo-cd
@@ -15,15 +20,8 @@ spec:
         releaseName: argocd
         valueFiles:
           - $values/values.yaml
-          - $values/values/app-projects.yaml
-          - $values/values/repository.yaml
         ignoreMissingValueFiles: true
 
-    # Overrides & custom manifests (values, templates, policies)
-    - repoURL: https://github.com/yujin0131/argocd.git
-      targetRevision: feature/test-argo
-      ref: values
-      path: .
 
   destination:
     server: https://kubernetes.default.svc
