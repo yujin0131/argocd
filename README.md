@@ -85,3 +85,40 @@ argocd app list
 ## 커스터마이징
 
 환경별(values-dev.yaml, values-prod.yaml) 또는 클러스터별 설정이 필요한 경우, 각 애플리케이션의 values 파일을 분리하여 관리할 수 있습니다.
+
+
+
+
+helm upgrade ./argocd \
+  -n argocd \
+  -f values/app-projects.yaml \
+  -f values/repository.yaml \
+  -f values/values.disclosure.yaml \
+  --values values.yaml
+
+
+helm template argocd . -f values/app-projects.yaml -f values/repository.yaml -f values/values.disclosure.yaml --values values.yaml -n argocd
+
+
+helm upgrade argocd ./ \
+  -n argocd \
+  -f values/app-projects.yaml \
+  -f values/repository.yaml \
+  -f values/values.disclosure.yaml \
+  -f values.yaml
+
+
+helm install argocd argo/argo-cd \
+  -n argocd --create-namespace \
+  -f values.yaml \
+  -f values/repository.yaml \
+  -f values/app-projects.yaml \
+  -f values/values.disclosure.yaml
+
+
+helm template argocd ./ \
+  -n argocd \
+  -f values.yaml \
+  -f values/repository.yaml \
+  -f values/app-projects.yaml \
+  -f values/values.disclosure.yamla

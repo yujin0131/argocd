@@ -21,7 +21,7 @@ spec:
       kind: ClusterRoleBinding
     - group: apiextensions.k8s.io
       kind: CustomResourceDefinition
-{{- range .Values.projects }}
+{{ range .Values.projects }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
