@@ -23,7 +23,7 @@ spec:
     - repoURL: https://github.com/yujin0131/argocd.git
       targetRevision: feature/test-argo
       ref: values
-      path: ..
+      path: .
 
   destination:
     server: https://kubernetes.default.svc
