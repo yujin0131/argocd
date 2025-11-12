@@ -1,24 +1,15 @@
-server:
-  service:
-    type: ClusterIP
+aws:
+  accountId: "should-be-your-aws-account-id"
+  profile: "should-be-your-eks-profile"
 
-configs:
-  params:
-    server.insecure: "true"
-  cm:
-    url: http://localhost:8080
-    dex.config: |
-      connectors:
-        - type: oidc
-          id: keycloak
-          name: Keycloak
-          config:
-            Issuer: https://auth.qraft.ai/realms/qraft
-            clientID: argocd-test-yujin
-            clientSecret: 13hPQRuFBQGvCwJH6JatLekXJndNoURZ
-            redirectURI: http://localhost:8080/api/dex/callback
-            requestedScopes: ["openid", "profile", "email", "groups"]
+domain: "should.be.set"
 
-redis:
-  secretInitContainer:
-    enabled: false
+slackWebhook: "should-be-your-slack-webhook"
+googleClientID: "should-be-your-google-oauth"
+googleClientSecret: "should-be-your-google-oauth"
+gitIp: "should-be-your-git-ip"
+enableExternalSecrets: true
+
+repositories: []
+
+projects: []

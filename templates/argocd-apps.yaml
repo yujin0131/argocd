@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: cluster-platform
+  source:
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 7.7.11
+    helm:
+      values: |
+        global:
+          hostAliases:
+          - hostnames:
+            - git.qraftec.com
+            ip: 10.10.0.40
+          domain: {{ $.Values.domain}}
+{{ .Files.Get "argocd-values.yaml" | indent 8 }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
