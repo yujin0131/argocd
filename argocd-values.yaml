@@ -175,8 +175,16 @@ dex:
   # @default -- `""` (defaults to global.runtimeClassName)
   runtimeClassName: ""
 
+  # -- Labels to be added to the Dex server pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
+
 ## Server
 server:
+  # -- Labels to be added to server pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
+
   ## Server service configuration
   service:
     # -- Server service type
@@ -211,7 +219,8 @@ server:
     # -- Used to maintain session affinity. Supports `ClientIP` and `None`
     ## Ref: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
     sessionAffinity: None
-
+  labels:
+    app.kubernetes.io/instance: argocd
 ## Notifications controller
 notifications:
   # -- Enable notifications controller
@@ -231,6 +240,10 @@ notifications:
   # @default -- `""` (defaults to global.logging.level)
   logLevel: ""
 
+  # -- Labels to be applied to the notifications controller Pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
+
   secret:
     # -- Whether helm chart creates notifications controller secret
     ## If true, will create a secret with the name below. Otherwise, will assume existence of a secret with that name.
@@ -248,3 +261,21 @@ notifications:
   cm:
     # -- Whether helm chart creates notifications controller config map
     create: false
+
+## Repo Server
+repoServer:
+  # -- Labels to be added to repo server pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
+
+## ApplicationSet controller
+applicationSet:
+  # -- Labels for the ApplicationSet controller pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
+
+## Application controller
+controller:
+  # -- Labels to be added to application controller pods
+  podLabels:
+    app.kubernetes.io/instance: argocd
