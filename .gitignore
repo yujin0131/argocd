@@ -27,3 +27,6 @@ Thumbs.db
 # Helm 차트 패키지
 *.tgz
 charts/*.tgz
+
+test*
+

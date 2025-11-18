@@ -1,8 +1,10 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-abac-cm
+  name: argocd-rbac-cm
   namespace: argocd
 data:
-  values.csv: |
+  policy.csv: |
 {{ .Files.Get "policies/values.csv" | indent 4 }}
+  scopes: '[groups,email]'

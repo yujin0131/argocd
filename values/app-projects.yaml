@@ -1,0 +1,5 @@
+projects:
+  - name: project-test
+    description: "test"
+    namespaces:
+      - test

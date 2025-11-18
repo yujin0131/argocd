@@ -3,14 +3,21 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: ml-platform
   source:
-    repoURL: https://git.qraftec.com:ml-platform/argocd.git
-    targetRevision: HEAD
-    path: .
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 7.7.11
+    helm:
+      values: |
+        global:
+          hostAliases:
+          - hostnames:
+            - git.qraftec.com
+            ip: 10.10.0.40
+          domain: {{ $.Values.domain}}
+{{ .Files.Get "argocd-values.yaml" | indent 8 }}
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -18,5 +25,3 @@ spec:
   #   automated:
   #     prune: true
   #     selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

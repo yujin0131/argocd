@@ -1,0 +1,15 @@
+aws:
+  accountId: "should-be-your-aws-account-id"
+  profile: "should-be-your-eks-profile"
+
+domain: "should.be.set"
+
+slackWebhook: "should-be-your-slack-webhook"
+googleClientID: "should-be-your-google-oauth"
+googleClientSecret: "should-be-your-google-oauth"
+gitIp: "should-be-your-git-ip"
+enableExternalSecrets: true
+
+repositories: []
+
+projects: []
